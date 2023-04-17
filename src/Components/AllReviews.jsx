@@ -11,7 +11,6 @@ function ReviewList() {
     fetchReviews().then((data) => {
       setIsLoading(false);
       setReviews(data.reviews);
-      console.log(data);
     });
   }, []);
 
