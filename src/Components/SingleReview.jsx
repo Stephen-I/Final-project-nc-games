@@ -29,6 +29,10 @@ const Review = () => {
     return <p>Review Loading...</p>;
   }
 
+  const created_atArr = singleReview.created_at.split("");
+  const time = created_atArr.slice(11, 16).join("");
+  const date = created_atArr.slice(0, 10).join("");
+
   return (
     <main>
       <p className="Single_review_title">
@@ -42,17 +46,24 @@ const Review = () => {
       />
       <p>{singleReview.review_body}</p>
       <p>Votes: {singleReview.votes}</p>
-      <p>{singleReview.created_at}</p>
+      <p>
+        {date} {time}
+      </p>
       <Link to="/">Home</Link> <Link to="/reviews">All Reviews</Link>
       <h2>Comments</h2>
       <ul>
         {comments.map((comment) => {
+          const created_atArr = comment.created_at.split("");
+          const time = created_atArr.slice(11, 16).join("");
+          const date = created_atArr.slice(0, 10).join("");
           return (
             <li key={comment.review_id} className="Comment">
               <p className="Author">{comment.author}</p>
               <p className="Comment_body">{comment.body}</p>
               <p className="Comment_votes">Votes: {comment.votes}</p>
-              <p className="Comment_date">{comment.created_at}</p>
+              <p className="Comment_date">
+                {date} {time}
+              </p>
             </li>
           );
         })}
