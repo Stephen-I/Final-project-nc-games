@@ -25,8 +25,13 @@ function ReviewList() {
       <ul className="container">
         {Reviews.map((Review) => {
           return (
-            <li key={Review.id} className="Review">
-              <p className="Review_title">{Review.title}</p>
+            <li key={Review.review_id} className="Review">
+              <Link
+                to={`/reviews/${Review.review_id}`}
+                className="Review_title"
+              >
+                {Review.owner}
+              </Link>
               <img
                 className="img"
                 src={Review.review_img_url}
