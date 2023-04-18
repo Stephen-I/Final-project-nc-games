@@ -31,6 +31,17 @@
   padding-bottom: 90px;
 }
 
+.Comment {
+  list-style-type: none;
+  border-color: #282c34;
+  border-style: solid;
+  margin: 10px;
+}
+
 .Review_title {
+  font-weight: bold;
+}
+
+.Author {
   font-weight: bold;
 }
