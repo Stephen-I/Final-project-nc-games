@@ -5,9 +5,7 @@ const gamesApi = axios.create({
 });
 
 export const fetchReviews = () => {
-  return fetch("/reviews")
-    .then((res) => res.json())
-    .then((data) => {
-      return data;
-    });
+  return gamesApi.get("/reviews").then((res) => {
+    return res.data;
+  });
 };
