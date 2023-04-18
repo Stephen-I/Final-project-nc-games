@@ -1,3 +1,7 @@
+* {
+  background-color: bisque;
+}
+
 .App {
   text-align: center;
 }
@@ -13,14 +17,11 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .img {
   width: 10pc;
   padding: 10px;
   float: left;
+  background-color: white;
 }
 
 .Review {
@@ -29,8 +30,43 @@
   border-style: solid;
   margin: 10px;
   padding-bottom: 90px;
+  background-color: white;
+}
+
+.Comment {
+  list-style-type: none;
+  border-color: #282c34;
+  border-style: solid;
+  margin: 10px;
+  background-color: white;
 }
 
 .Review_title {
   font-weight: bold;
+  background-color: white;
+}
+
+.Review_body {
+  background-color: white;
+}
+
+.Single_review_title {
+  font-weight: bold;
+}
+
+.Author {
+  font-weight: bold;
+  background-color: white;
+}
+
+.Comment_body {
+  background-color: white;
+}
+
+.Comment_date {
+  background-color: white;
+}
+
+.Comment_votes {
+  background-color: white;
 }
