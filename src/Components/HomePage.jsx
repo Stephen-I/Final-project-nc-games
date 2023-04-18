@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div>
+    <main>
       <Link to="/reviews">All Reviews</Link>;
-    </div>
+    </main>
   );
 };
 

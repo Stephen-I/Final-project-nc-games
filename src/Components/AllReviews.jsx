@@ -19,7 +19,7 @@ function ReviewList() {
   }
 
   return (
-    <main>
+    <main classname="Reviews">
       <Link to="/">Home</Link>
 
       <ul className="container">
@@ -37,7 +37,7 @@ function ReviewList() {
                 src={Review.review_img_url}
                 alt={Review.Review_name}
               />
-              <p>{Review.review_body}</p>
+              <p className="Review_body">{Review.review_body}</p>
             </li>
           );
         })}

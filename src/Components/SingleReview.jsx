@@ -31,7 +31,7 @@ const Review = () => {
 
   return (
     <main>
-      <p className="Review_title">
+      <p className="Single_review_title">
         {singleReview.title} by {singleReview.owner}
       </p>
       <p>Category: {singleReview.category}</p>
@@ -50,9 +50,9 @@ const Review = () => {
           return (
             <li key={comment.review_id} className="Comment">
               <p className="Author">{comment.author}</p>
-              <p>{comment.body}</p>
-              <p>Votes: {comment.votes}</p>
-              <p>{comment.created_at}</p>
+              <p className="Comment_body">{comment.body}</p>
+              <p className="Comment_votes">Votes: {comment.votes}</p>
+              <p className="Comment_date">{comment.created_at}</p>
             </li>
           );
         })}
