@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleReview, fetchComments } from "../Api";
+import { fetchSingleReview, fetchComments, postComments } from "../Api";
 import { Link } from "react-router-dom";
 
 const Review = () => {
@@ -9,6 +9,8 @@ const Review = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [votes, setVotes] = useState(0);
+  const [commentBody, setCommentBody] = useState("");
+  const [user, setuser] = useState("tickle122");
   let date = "";
   let time = "";
 
@@ -19,7 +21,7 @@ const Review = () => {
       setSingleReview(data.review);
     });
   }, [review_id]);
-  console.log(singleReview.votes);
+
   useEffect(() => {
     setIsLoading(true);
     fetchComments(review_id).then((data) => {
@@ -48,6 +50,15 @@ const Review = () => {
     setVotes((currentVotes) => currentVotes - 1);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const newComment = {
+      username: user,
+      body: commentBody,
+    };
+    postComments(newComment, review_id);
+  }
+
   return (
     <main>
       <p className="Single_review_title">
@@ -73,7 +84,7 @@ const Review = () => {
             name="Voting"
             value={singleReview.votes}
           />
-          <label for="UpVote">UpVote</label>
+          <label htmlFor="UpVote">UpVote</label>
 
           <input
             onChange={downVote}
@@ -82,16 +93,29 @@ const Review = () => {
             name="Voting"
             value={singleReview.votes}
           />
-          <label for="DownVote">DownVote</label>
+          <label htmlFor="DownVote">DownVote</label>
         </div>
       </form>
       <Link to="/">Home</Link> <Link to="/reviews">All Reviews</Link>
       <h2>Comments</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="AddComment"
+          type="text"
+          value={commentBody}
+          onChange={(e) => {
+            setCommentBody(e.target.value);
+          }}
+        ></input>
+        <button type="submit" className="submitBtn">
+          Add comment
+        </button>
+      </form>
       <ul>
         {comments.map((comment) => {
           splitCreatedAt(comment);
           return (
-            <li key={comment.review_id} className="Comment">
+            <li key={comment.comment_id} className="Comment">
               <p className="Author">{comment.author}</p>
               <p className="Comment_body">{comment.body}</p>
               <p className="Comment_votes">Votes: {comment.votes}</p>

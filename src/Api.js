@@ -16,8 +16,12 @@ export const fetchSingleReview = (reviewsId) => {
   });
 };
 
-export const fetchComments = (reviewsId) => {
-  return gamesApi.get(`/reviews/${reviewsId}/comments`).then((res) => {
+export const fetchComments = (reviewId) => {
+  return gamesApi.get(`/reviews/${reviewId}/comments`).then((res) => {
     return res.data;
   });
+};
+
+export const postComments = (newComment, reviewId) => {
+  return gamesApi.post(`/reviews/${reviewId}/comments`, newComment);
 };
