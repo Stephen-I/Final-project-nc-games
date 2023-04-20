@@ -2,17 +2,17 @@ import { useState, useEffect } from "react";
 import { fetchReviews } from "../Api";
 import { Link } from "react-router-dom";
 
-function ReviewList() {
+function ReviewList(selectedCategory) {
   const [Reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchReviews().then((data) => {
+    fetchReviews(selectedCategory.selectedCategory).then((data) => {
       setIsLoading(false);
       setReviews(data.reviews);
     });
-  }, []);
+  }, [selectedCategory.selectedCategory]);
 
   if (isLoading) {
     return <p>Loading...</p>;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchCategories } from "../Api";
 
-const HomePage = (setSelectedCategory) => {
+const HomePage = ({ setSelectedCategory }) => {
   const [Categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,8 +18,8 @@ const HomePage = (setSelectedCategory) => {
     return <p>Loading...</p>;
   }
 
-  function onClick(category) {
-    setSelectedCategory(category);
+  function onClick(e) {
+    setSelectedCategory(e.target.value);
   }
 
   return (
@@ -32,7 +32,10 @@ const HomePage = (setSelectedCategory) => {
               <Link to="/categories" className="category_title">
                 <button
                   className="categoryBtn"
-                  onClick={onClick(category.slug)}
+                  type="button"
+                  id={category.slug}
+                  value={category.slug}
+                  onClick={onClick}
                 >
                   {category.slug}
                 </button>

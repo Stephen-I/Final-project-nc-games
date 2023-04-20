@@ -8,11 +8,11 @@ const CategoryLinks = (selectedCategory) => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchReviews(selectedCategory).then((data) => {
+    fetchReviews(selectedCategory.selectedCategory).then((data) => {
       setIsLoading(false);
       setReviews(data.reviews);
     });
-  }, [selectedCategory]);
+  }, [selectedCategory.selectedCategory]);
 
   if (isLoading) {
     return <p>Loading...</p>;

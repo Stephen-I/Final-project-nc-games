@@ -12,12 +12,16 @@ function App() {
   return (
     <section className="App">
       <header className="App-header">Nc games</header>
+
       <Routes>
         <Route
           path="/"
           element={<HomePage setSelectedCategory={setSelectedCategory} />}
         ></Route>
-        <Route path="/reviews" element={<AllReviews />}></Route>
+        <Route
+          path="/reviews"
+          element={<AllReviews selectedCategory={selectedCategory} />}
+        ></Route>
         <Route path="/reviews/:review_id" element={<SingleReview />}></Route>
         <Route
           path="/categories"

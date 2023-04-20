@@ -4,8 +4,8 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-d5cd.onrender.com/api",
 });
 
-export const fetchReviews = () => {
-  return gamesApi.get("/reviews").then((res) => {
+export const fetchReviews = (Category) => {
+  return gamesApi.get(`/reviews?category=${Category}`).then((res) => {
     return res.data;
   });
 };
@@ -29,7 +29,7 @@ export const postComments = (newComment, reviewId) => {
 };
 
 export const fetchCategories = () => {
-  return gamesApi.get("/categories").then((res) => {
+  return gamesApi.get(`/categories`).then((res) => {
     return res.data;
   });
 };
