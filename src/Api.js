@@ -27,3 +27,9 @@ export const postComments = (newComment, reviewId) => {
     .post(`/reviews/${reviewId}/comments`, newComment)
     .then((res) => res.data.comment);
 };
+
+export const fetchCategories = () => {
+  return gamesApi.get("/categories").then((res) => {
+    return res.data;
+  });
+};

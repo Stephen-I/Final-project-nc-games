@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import CategoriesLink from "./Components/CategoriesLink";
+import Category from "./Components/Category";
 import AllReviews from "./Components/AllReviews";
 import HomePage from "./Components/HomePage";
 import SingleReview from "./Components/SingleReview";
@@ -13,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/reviews" element={<AllReviews />}></Route>
         <Route path="/reviews/:review_id" element={<SingleReview />}></Route>
+        <Route path="/category" element={<Category />}></Route>
       </Routes>
     </section>
   );
