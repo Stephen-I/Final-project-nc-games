@@ -41,6 +41,16 @@
   background-color: white;
 }
 
+.AddComment {
+  background-color: white;
+  height: 40px;
+  width: 55pc;
+}
+
+.submitBtn {
+  margin: 20px;
+}
+
 .Review_title {
   font-weight: bold;
   background-color: white;
