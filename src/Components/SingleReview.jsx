@@ -106,6 +106,7 @@ const Review = () => {
           onChange={(e) => {
             setCommentBody(e.target.value);
           }}
+          required
         ></input>
         <button type="submit" className="submitBtn">
           Add comment
