@@ -19,7 +19,7 @@ function ReviewList() {
   }
 
   return (
-    <main classname="Reviews">
+    <main className="Reviews">
       <Link to="/">Home</Link>
 
       <ul className="container">
