@@ -23,5 +23,7 @@ export const fetchComments = (reviewId) => {
 };
 
 export const postComments = (newComment, reviewId) => {
-  return gamesApi.post(`/reviews/${reviewId}/comments`, newComment);
+  return gamesApi
+    .post(`/reviews/${reviewId}/comments`, newComment)
+    .then((res) => res.data.comment);
 };

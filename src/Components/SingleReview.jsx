@@ -46,7 +46,10 @@ const Review = () => {
       username: user,
       body: commentBody,
     };
-    postComments(newComment, review_id);
+    postComments(newComment, review_id).then((newCommentApi) => {
+      setComments((currentComments) => [newCommentApi, ...currentComments]);
+    });
+    setCommentBody("");
   }
 
   return (
