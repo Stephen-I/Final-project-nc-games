@@ -11,8 +11,6 @@ const Review = () => {
   const [votes, setVotes] = useState(0);
   const [commentBody, setCommentBody] = useState("");
   const [user, setuser] = useState("tickle122");
-  let date = "";
-  let time = "";
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,14 +31,6 @@ const Review = () => {
   if (isLoading) {
     return <p>Review Loading...</p>;
   }
-
-  function splitCreatedAt(obj) {
-    const created_atArr = obj.created_at.split("");
-    time = created_atArr.slice(11, 16).join("");
-    date = created_atArr.slice(0, 10).join("");
-    return date, time;
-  }
-  splitCreatedAt(singleReview);
 
   function upVote() {
     setVotes((currentVotes) => currentVotes + 1);
@@ -72,9 +62,7 @@ const Review = () => {
       />
       <p>{singleReview.review_body}</p>
       <p>Votes: {singleReview.votes + votes}</p>
-      <p>
-        {date} {time}
-      </p>
+      <p>{new Date(singleReview.created_at).toLocaleDateString()}</p>
       <form>
         <div className="RadioBtn Container">
           <input
@@ -114,14 +102,13 @@ const Review = () => {
       </form>
       <ul>
         {comments.map((comment) => {
-          splitCreatedAt(comment);
           return (
             <li key={comment.comment_id} className="Comment">
               <p className="Author">{comment.author}</p>
               <p className="Comment_body">{comment.body}</p>
               <p className="Comment_votes">Votes: {comment.votes}</p>
               <p className="Comment_date">
-                {date} {time}
+                {new Date(comment.created_at).toLocaleDateString()}
               </p>
             </li>
           );
