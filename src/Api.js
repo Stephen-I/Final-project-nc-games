@@ -39,7 +39,5 @@ export const postComments = (newComment, reviewId) => {
 };
 
 export const fetchCategories = () => {
-  return gamesApi.get(`/categories`).then((res) => {
-    return res.data;
-  });
+  return gamesApi.get(`/categories`).then((res) => res.data);
 };
