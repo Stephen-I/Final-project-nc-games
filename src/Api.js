@@ -4,21 +4,21 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-d5cd.onrender.com/api",
 });
 
-export const fetchReviews = (Category) => {
+export const fetchReviews = () => {
   return gamesApi.get(`/reviews`).then((res) => {
     return res.data;
   });
 };
 
-export const fetchReviewsByCategories = (Category) => {
-  return axios
-    .get(`https://nc-games-d5cd.onrender.com/api/reviews`, {
-      params: { category: Category },
-    })
-    .then((res) => {
-      return res.data;
-    });
-};
+// export const fetchReviewsByCategories = (Category) => {
+//   return gamesApi
+//     .get(`/reviews`, {
+//       params: { category: Category },
+//     })
+//     .then((res) => {
+//       return res.data;
+//     });
+// };
 
 export const fetchSingleReview = (reviewsId) => {
   return gamesApi.get(`/reviews/${reviewsId}`).then((res) => {
