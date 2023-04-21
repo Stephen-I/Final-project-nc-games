@@ -24,7 +24,7 @@ function App() {
         ></Route>
         <Route path="/reviews/:review_id" element={<SingleReview />}></Route>
         <Route
-          path="/categories"
+          path="/categories/:category"
           element={<Category selectedCategory={selectedCategory} />}
         ></Route>
       </Routes>

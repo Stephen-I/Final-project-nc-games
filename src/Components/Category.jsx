@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchReviews } from "../Api";
+import { fetchReviewsByCategories } from "../Api";
 
 const CategoryLinks = (selectedCategory) => {
   const [Reviews, setReviews] = useState([]);
@@ -8,7 +8,7 @@ const CategoryLinks = (selectedCategory) => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchReviews(selectedCategory.selectedCategory).then((data) => {
+    fetchReviewsByCategories(selectedCategory.selectedCategory).then((data) => {
       setIsLoading(false);
       setReviews(data.reviews);
     });

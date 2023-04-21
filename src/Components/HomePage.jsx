@@ -29,7 +29,10 @@ const HomePage = ({ setSelectedCategory }) => {
         {Categories.map((category) => {
           return (
             <li className="Category">
-              <Link to="/categories" className="category_title">
+              <Link
+                to={`/categories/${category.slug}`}
+                className="category_title"
+              >
                 <button
                   className="categoryBtn"
                   type="button"
