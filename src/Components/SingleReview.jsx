@@ -62,8 +62,8 @@ const Review = () => {
     deleteComments(e).then(() => {
       setHasDeleted(true);
       alert("Comment deleted");
-      comments.pop();
-      setComments(comments);
+      // const deletedComment = comments.filter(() => e.comment_id);
+      // setComments(comments);
     });
   }
 
