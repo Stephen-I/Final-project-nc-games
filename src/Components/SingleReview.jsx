@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSingleReview, fetchComments, postComments } from "../Api";
+import {
+  fetchSingleReview,
+  fetchComments,
+  postComments,
+  deleteComments,
+} from "../Api";
 import { Link } from "react-router-dom";
 
 const Review = () => {
@@ -11,6 +16,7 @@ const Review = () => {
   const [votes, setVotes] = useState(0);
   const [commentBody, setCommentBody] = useState("");
   const [user, setuser] = useState("tickle122");
+  const [hasDeleted, setHasDeleted] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -40,7 +46,7 @@ const Review = () => {
     setVotes((currentVotes) => currentVotes - 1);
   }
 
-  function handleSubmit(e) {
+  function addComment(e) {
     e.preventDefault();
     const newComment = {
       username: user,
@@ -50,6 +56,15 @@ const Review = () => {
       setComments((currentComments) => [newCommentApi, ...currentComments]);
     });
     setCommentBody("");
+  }
+
+  function deleteComment(e) {
+    deleteComments(e).then(() => {
+      setHasDeleted(true);
+      alert("Comment deleted");
+      // const deletedComment = comments.filter(() => e.comment_id);
+      // setComments(comments);
+    });
   }
 
   return (
@@ -89,7 +104,7 @@ const Review = () => {
       </form>
       <Link to="/">Home</Link> <Link to="/reviews">All Reviews</Link>
       <h2>Comments</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={addComment}>
         <input
           className="AddComment"
           type="text"
@@ -113,6 +128,15 @@ const Review = () => {
               <p className="Comment_date">
                 {new Date(comment.created_at).toLocaleDateString()}
               </p>
+              <button
+                className="DeleteBtn"
+                value={comment.comment_id}
+                onClick={(e) => {
+                  deleteComment(e.target.value);
+                }}
+              >
+                Delete Comment
+              </button>
             </li>
           );
         })}
