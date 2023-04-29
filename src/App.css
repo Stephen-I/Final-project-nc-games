@@ -115,3 +115,11 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.category_title {
+  background-color: white;
+}
+
+.category_description {
+  background-color: white;
+}
