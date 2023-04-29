@@ -10,15 +10,15 @@ export const fetchReviews = () => {
   });
 };
 
-// export const fetchReviewsByCategories = (Category) => {
-//   return gamesApi
-//     .get(`/reviews`, {
-//       params: { category: Category },
-//     })
-//     .then((res) => {
-//       return res.data;
-//     });
-// };
+export const fetchReviewsByCategories = (Category) => {
+  return gamesApi
+    .get(`/reviews`, {
+      params: { category: Category },
+    })
+    .then((res) => {
+      return res.data;
+    });
+};
 
 export const fetchSingleReview = (reviewsId) => {
   return gamesApi.get(`/reviews/${reviewsId}`).then((res) => {
