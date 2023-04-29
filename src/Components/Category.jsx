@@ -1,29 +1,29 @@
-import { useState, useEffect } from "react";
-import { fetchReviews } from "../Api";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { fetchReviewsByCategories } from "../Api";
 
-function ReviewList(selectedCategory) {
-  const [Reviews, setReviews] = useState([]);
+const CategoryLinks = ({ selectedCategory }) => {
+  const [ReviewByCategory, setReviewByCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchReviews(selectedCategory.selectedCategory).then((data) => {
+    fetchReviewsByCategories(selectedCategory).then((data) => {
       setIsLoading(false);
-      setReviews(data.reviews);
+      setReviewByCategory(data.reviews);
     });
-  }, [selectedCategory.selectedCategory]);
+  }, [selectedCategory]);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <main className="Reviews">
+    <main>
       <Link to="/">Home</Link>
 
-      <ul className="container">
-        {Reviews.map((Review) => {
+      <ul>
+        {ReviewByCategory.map((Review) => {
           return (
             <li key={Review.review_id} className="Review">
               <Link
@@ -44,6 +44,6 @@ function ReviewList(selectedCategory) {
       </ul>
     </main>
   );
-}
+};
 
-export default ReviewList;
+export default CategoryLinks;

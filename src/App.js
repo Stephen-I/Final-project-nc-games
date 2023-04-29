@@ -1,18 +1,32 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import CategoriesLink from "./Components/CategoriesLink";
+import Category from "./Components/Category";
 import AllReviews from "./Components/AllReviews";
 import HomePage from "./Components/HomePage";
 import SingleReview from "./Components/SingleReview";
+import { useState } from "react";
 
 function App() {
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   return (
     <section className="App">
       <header className="App-header">Nc games</header>
+
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/reviews" element={<AllReviews />}></Route>
+        <Route
+          path="/"
+          element={<HomePage setSelectedCategory={setSelectedCategory} />}
+        ></Route>
+        <Route
+          path="/reviews"
+          element={<AllReviews selectedCategory={selectedCategory} />}
+        ></Route>
         <Route path="/reviews/:review_id" element={<SingleReview />}></Route>
+        <Route
+          path="/categories/:category"
+          element={<Category selectedCategory={selectedCategory} />}
+        ></Route>
       </Routes>
     </section>
   );

@@ -5,9 +5,19 @@ const gamesApi = axios.create({
 });
 
 export const fetchReviews = () => {
-  return gamesApi.get("/reviews").then((res) => {
+  return gamesApi.get(`/reviews`).then((res) => {
     return res.data;
   });
+};
+
+export const fetchReviewsByCategories = (Category) => {
+  return gamesApi
+    .get(`/reviews`, {
+      params: { category: Category },
+    })
+    .then((res) => {
+      return res.data;
+    });
 };
 
 export const fetchSingleReview = (reviewsId) => {
@@ -30,4 +40,8 @@ export const postComments = (newComment, reviewId) => {
 
 export const deleteComments = (commentId) => {
   return gamesApi.delete(`/comments/${commentId}`).then((res) => res.data);
+};
+
+export const fetchCategories = () => {
+  return gamesApi.get(`/categories`).then((res) => res.data);
 };
